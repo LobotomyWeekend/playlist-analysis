@@ -1,0 +1,5 @@
+# API Keys
+key.txt
+*.json
+#VS Code Settings
+/.vscode
