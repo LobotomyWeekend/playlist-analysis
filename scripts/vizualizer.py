@@ -12,7 +12,7 @@ import plotly.express as px
 
 class Vizualizer:
     def __init__(self):
-        self.df = pd.read_pickle('./data/video_data.pkl')
+        self.df = pd.read_pickle('./data/video_data_parsed.pkl')
 
     def plotYears(self):
         # number of decades between 1900 and 2030
@@ -30,9 +30,9 @@ class Vizualizer:
     def plotTimeDiff(self):
         fig = px.histogram(self.df, x='timeDiff')
         fig.show()
-    
+
     def plotAdded(self):
-        fig = px.histogram(self.df, x=['addedToPlaylist'])
+        fig = px.histogram(self.df, x=['addedToPlaylist'], nbins=10)
         fig.show()
 
     def run(self):

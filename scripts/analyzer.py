@@ -13,13 +13,21 @@ class Analyzer:
     def __init__(self):
         self.df = pd.read_pickle('./data/video_data.pkl')
 
+    def toNumeric(self):
+        # convert some responses to numeric
+        self.df['viewCount'] = pd.to_numeric(self.df['viewCount'])
+        self.df['commentCount'] = pd.to_numeric(self.df['commentCount'])
+        self.df['likeCount'] = pd.to_numeric(self.df['likeCount'])
+        self.df['dislikeCount'] = pd.to_numeric(self.df['dislikeCount'])
+
     def parseTime(self):
         # convert to datetime
         self.df['videoPublishedAt'] = pd.to_datetime(self.df['videoPublishedAt'])
         self.df['addedToPlaylist'] = pd.to_datetime(self.df['addedToPlaylist'])
 
         # diff between uploaded and saved to playlist
-        self.df['timeDiff'] = self.df['addedToPlaylist'] - self.df['videoPublishedAt']
+        self.df['timeDiff'] = self.df['addedToPlaylist'] - \
+            self.df['videoPublishedAt']
 
         # TODO: covert to days
 
@@ -36,7 +44,7 @@ class Analyzer:
         # TODO: Try description if NaN
 
     def save(self):
-        self.df.to_pickle('./data/video_data.pkl')
+        self.df.to_pickle('./data/video_data_parsed.pkl')
 
     def run(self):
         self.parseTime()
