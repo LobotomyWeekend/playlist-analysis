@@ -3,3 +3,5 @@ key.txt
 *.json
 #VS Code Settings
 /.vscode
+# Data files
+*.pkl

@@ -1,3 +1,5 @@
 google_auth_oauthlib
 googleapiclient
 pandas
+plotly
+chart_studio
